@@ -114,14 +114,14 @@ sai_status_t sai_vm_db_init (void)
         }
     }
 
-    std_config_file_close (cfg_file_handle);
-
     if (db_sql_open ((void **)&db, std::string(db_path).c_str())
         != STD_ERR_OK) {
         SAI_VM_DB_LOG_ERR ("Error getting database handle.");
 
         return SAI_STATUS_FAILURE;
     }
+
+    std_config_file_close (cfg_file_handle);
 
     return SAI_STATUS_SUCCESS;
 }
